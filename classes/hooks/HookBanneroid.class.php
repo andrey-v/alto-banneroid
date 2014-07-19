@@ -39,7 +39,7 @@ class PluginAb_HookBanneroid extends Hook {
     public function AddBannerBlock() {
 
         if (in_array(Router::GetAction(), Config::Get('plugin.ab.banner_skip_actions'))) {
-            return false;
+            return '';
         }
         $aBanners = $this->PluginAb_Banner_GetSideBarBanners($_SERVER['REQUEST_URI'], true);
         if (count($aBanners)) { //Insert banner block
@@ -48,7 +48,7 @@ class PluginAb_HookBanneroid extends Hook {
                 'aBanners' => $aBanners
             ), Config::Get('plugin.ab.banner_block_order'));
         }
-        return true;
+        return '';
     }
 
     /**
