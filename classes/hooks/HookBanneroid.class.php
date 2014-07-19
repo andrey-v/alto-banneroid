@@ -23,7 +23,7 @@ class PluginAb_HookBanneroid extends Hook {
         if (isset($_SERVER['REQUEST_URI'])) {
 //            $this->AddHook('init_action', 'AddBannerBlock', __CLASS__, -100);
             $this->AddHook('template_layout_body_begin', 'AddBannerBlock', __CLASS__, -100);
-            $this->AddHook(Config::Get('plugin.banneroid.banner_content_hook'), 'AddBannersInContent', __CLASS__, 0);
+            $this->AddHook(Config::Get('plugin.ab.banner_content_hook'), 'AddBannersInContent', __CLASS__, 0);
             $this->AddHook('template_body_begin', 'AddBannersInHeader', __CLASS__, 0);
             $this->AddHook('template_body_end', 'AddBannersInFooter', __CLASS__, 0);
         }
@@ -38,7 +38,7 @@ class PluginAb_HookBanneroid extends Hook {
      */
     public function AddBannerBlock() {
 
-        if (in_array(Router::GetAction(), Config::Get('plugin.banneroid.banner_skip_actions'))) {
+        if (in_array(Router::GetAction(), Config::Get('plugin.ab.banner_skip_actions'))) {
             return false;
         }
         $aBanners = $this->PluginAb_Banner_GetSideBarBanners($_SERVER['REQUEST_URI'], true);
@@ -46,7 +46,7 @@ class PluginAb_HookBanneroid extends Hook {
             $this->Viewer_AddWidget('right', 'banneroid', array(
                 'plugin' => 'ab',
                 'aBanners' => $aBanners
-            ), Config::Get('plugin.banneroid.banner_block_order'));
+            ), Config::Get('plugin.ab.banner_block_order'));
         }
         return true;
     }
@@ -58,14 +58,14 @@ class PluginAb_HookBanneroid extends Hook {
      * @return mixed
      */
     public function AddBannersInContent() {
-        if (in_array(Router::GetAction(), Config::Get('plugin.banneroid.banner_skip_actions'))) {
+        if (in_array(Router::GetAction(), Config::Get('plugin.ab.banner_skip_actions'))) {
             return false;
         }
 
         $aBanners = $this->PluginAb_Banner_GetContentBanners($_SERVER['REQUEST_URI'], true);
         if (count($aBanners)) { //Insert banner block
             $this->Viewer_Assign("aBanners", $aBanners);
-            $this->Viewer_Assign('sBannersPath', Config::Get("plugin.banneroid.images_dir"));
+            $this->Viewer_Assign('sBannersPath', Config::Get("plugin.ab.images_dir"));
             return $this->Viewer_Fetch(
                 Plugin::GetTemplatePath(__CLASS__) . 'content.banneroid.tpl');
         }
@@ -78,14 +78,14 @@ class PluginAb_HookBanneroid extends Hook {
      * @return mixed
      */
     public function AddBannersInHeader() {
-        if (in_array(Router::GetAction(), Config::Get('plugin.banneroid.banner_skip_actions'))) {
+        if (in_array(Router::GetAction(), Config::Get('plugin.ab.banner_skip_actions'))) {
             return false;
         }
 
         $aBanners = $this->PluginAb_Banner_GetHeaderBanners($_SERVER['REQUEST_URI'], true);
         if (count($aBanners)) { //Insert banner block
             $this->Viewer_Assign("aBanners", $aBanners);
-            $this->Viewer_Assign('sBannersPath', Config::Get("plugin.banneroid.images_dir"));
+            $this->Viewer_Assign('sBannersPath', Config::Get("plugin.ab.images_dir"));
             return $this->Viewer_Fetch(
                 Plugin::GetTemplatePath(__CLASS__) . 'header.banneroid.tpl');
         }
@@ -98,14 +98,14 @@ class PluginAb_HookBanneroid extends Hook {
      * @return mixed
      */
     public function AddBannersInFooter($aVars) {
-        if (in_array(Router::GetAction(), Config::Get('plugin.banneroid.banner_skip_actions'))) {
+        if (in_array(Router::GetAction(), Config::Get('plugin.ab.banner_skip_actions'))) {
             return false;
         }
 
         $aBanners = $this->PluginAb_Banner_GetFooterBanners($_SERVER['REQUEST_URI'], true);
         if (count($aBanners)) { //Insert banner block
             $this->Viewer_Assign("aBanners", $aBanners);
-            $this->Viewer_Assign('sBannersPath', Config::Get("plugin.banneroid.images_dir"));
+            $this->Viewer_Assign('sBannersPath', Config::Get("plugin.ab.images_dir"));
             return $this->Viewer_Fetch(
                 Plugin::GetTemplatePath(__CLASS__) . 'footer.banneroid.tpl');
         }

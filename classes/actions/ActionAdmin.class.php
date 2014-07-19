@@ -70,7 +70,7 @@ class PluginAb_ActionAdmin extends PluginAb_Inherit_ActionAdmin {
         $this->sMainMenuItem = 'content';
 
         $this->Viewer_Assign('aBannersList', $this->PluginAb_Banner_GetBannersList());
-        $this->_setTitle($this->Lang_Get('plugin.banneroid.banneroid_title'));
+        $this->_setTitle($this->Lang_Get('plugin.ab.banneroid_title'));
 
 
     }
@@ -88,7 +88,7 @@ class PluginAb_ActionAdmin extends PluginAb_Inherit_ActionAdmin {
 
         if (getRequest('submit_banner')) {
             if ($this->PluginAb_Banner_Save($oBanner)) {
-                $this->Message_AddNotice($this->Lang_Get('plugin.banneroid.banneroid_ok_add'), $this->Lang_Get('attention'), true);
+                $this->Message_AddNotice($this->Lang_Get('plugin.ab.banneroid_ok_add'), $this->Lang_Get('attention'), true);
                 Router::Location(Config::Get("path.root.web") . 'admin/banneroid-list/');
             }
         }
@@ -102,7 +102,7 @@ class PluginAb_ActionAdmin extends PluginAb_Inherit_ActionAdmin {
         $_REQUEST['banner_type'] = 1;
 
 
-        $this->_setTitle($this->Lang_Get('plugin.banneroid.banneroid_edit'));
+        $this->_setTitle($this->Lang_Get('plugin.ab.banneroid_edit'));
     }
 
     /**
@@ -121,7 +121,7 @@ class PluginAb_ActionAdmin extends PluginAb_Inherit_ActionAdmin {
 
         if (getRequest('submit_banner')) {
             if ($this->PluginAb_Banner_Save($oBanner)) {
-                $this->Message_AddNotice($this->Lang_Get('plugin.banneroid.banneroid_ok_edit'), $this->Lang_Get('attention'), true);
+                $this->Message_AddNotice($this->Lang_Get('plugin.ab.banneroid_ok_edit'), $this->Lang_Get('attention'), true);
                 Router::Location(Config::Get("path.root.web") . 'admin/banneroid-list/');
             }
         }
@@ -141,12 +141,12 @@ class PluginAb_ActionAdmin extends PluginAb_Inherit_ActionAdmin {
         $_REQUEST['banner_type'] = $oBanner->getBannerType();
 
         if (strlen(@$oBanner->getBannerImage())) {
-            $_REQUEST['banner_image'] = Config::Get("plugin.banneroid.images_dir") .
+            $_REQUEST['banner_image'] = Config::Get("plugin.ab.images_dir") .
                 $oBanner->getBannerImage();
             $_REQUEST['banner_is_image'] = true;
         }
 
-        $this->_setTitle($this->Lang_Get('plugin.banneroid.banneroid_edit'));
+        $this->_setTitle($this->Lang_Get('plugin.ab.banneroid_edit'));
         $this->SetTemplateAction('banneroid-add');
     }
 
@@ -157,7 +157,7 @@ class PluginAb_ActionAdmin extends PluginAb_Inherit_ActionAdmin {
         $sBannerId = $this->GetParam(0);
 
         $this->PluginAb_Banner_HideBanner($sBannerId);
-        $this->Message_AddNotice($this->Lang_Get('plugin.banneroid.banneroid_ok_delete'), $this->Lang_Get('attention'), true);
+        $this->Message_AddNotice($this->Lang_Get('plugin.ab.banneroid_ok_delete'), $this->Lang_Get('attention'), true);
 
         Router::Location(Config::Get("path.root.web") . 'admin/banneroid-list/');
     }

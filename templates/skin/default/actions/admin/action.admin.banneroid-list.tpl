@@ -10,16 +10,16 @@
     <div class="span12">
         <div class="b-wbox">
             <div class="b-wbox-header">
-                <h3 class="b-wbox-header-title">{$aLang.plugin.banneroid.banneroid_title}</h3>
+                <h3 class="b-wbox-header-title">{$aLang.plugin.ab.banneroid_title}</h3>
             </div>
             <div class="b-wbox-content">
                 {if $aBannersList}
                     <table class="table table-people table-talk">
                         <thead>
                         <tr>
-                            <td>{$aLang.plugin.banneroid.banneroid_banner}</td>
-                            <td class="center">{$aLang.plugin.banneroid.banneroid_place}</td>
-                            <td class="center">{$aLang.plugin.banneroid.banneroid_direct}</td>
+                            <td>{$aLang.plugin.ab.banneroid_banner}</td>
+                            <td class="center">{$aLang.plugin.ab.banneroid_place}</td>
+                            <td class="center">{$aLang.plugin.ab.banneroid_direct}</td>
                         </tr>
                         </thead>
                         <tbody>
@@ -29,7 +29,7 @@
                                 <td class="center">{$oBanner->getPagesNames()}</td>
                                 <td class="center">
                                     <a href="{router page='admin'}banneroid-edit/{$oBanner->getId()}/"><i class="icon icon-note"></i></a>
-                                    <a href="javascript:if(confirm('{$aLang.plugin.banneroid.banneroid_delete}?'))window.location.href='{router page='admin'}banneroid-delete/{$oBanner->getId()}/';">
+                                    <a href="javascript:if(confirm('{$aLang.plugin.ab.banneroid_delete}?'))window.location.href='{router page='admin'}banneroid-delete/{$oBanner->getId()}/';">
                                         <i class="icon icon-trash"></i>
                                     </a>
                                 </td>
@@ -38,7 +38,7 @@
                         </tbody>
                     </table>
                 {else}
-                    {$aLang.plugin.banneroid.banneroid_empty}
+                    {$aLang.plugin.ab.banneroid_empty}
                 {/if}
             </div>
         </div>

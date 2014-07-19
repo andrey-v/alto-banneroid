@@ -47,7 +47,7 @@ class PluginAb_ModuleBanner_EntityBanner extends Entity {
      * @return integer
      */
     public function getMaxYear() {
-        return date('Y') + Config::Get('plugin.banneroid.max_year');
+        return date('Y') + Config::Get('plugin.ab.max_year');
     }
     
     public function setBannerLang($data)

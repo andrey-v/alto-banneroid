@@ -25,7 +25,7 @@ class PluginAb_WidgetBanneroid extends Widget {
         if (isset($aBanners[0])) {
             $this->Viewer_Assign("oBanner", $aBanners[0]);
         }
-        $this->Viewer_Assign('sBannersPath', Config::Get("plugin.banneroid.images_dir"));
+        $this->Viewer_Assign('sBannersPath', Config::Get("plugin.ab.images_dir"));
     }
 
 }

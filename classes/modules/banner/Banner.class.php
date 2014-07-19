@@ -34,11 +34,11 @@ class PluginAb_ModuleBanner extends Module {
      */
     public function Init() {
         $this->_oMapper = Engine::GetMapper(__CLASS__);
-        $this->_aPlaceNames[0] = $this->Lang_Get('plugin.banneroid.banneroid_total');
-        $this->_aPlaceNames[1] = $this->Lang_Get('plugin.banneroid.banneroid_under_article');
-        $this->_aPlaceNames[2] = $this->Lang_Get('plugin.banneroid.banneroid_side_bar');
-        $this->_aPlaceNames[3] = $this->Lang_Get('plugin.banneroid.banneroid_body_begin');
-        $this->_aPlaceNames[4] = $this->Lang_Get('plugin.banneroid.banneroid_body_end');
+        $this->_aPlaceNames[0] = $this->Lang_Get('plugin.ab.banneroid_total');
+        $this->_aPlaceNames[1] = $this->Lang_Get('plugin.ab.banneroid_under_article');
+        $this->_aPlaceNames[2] = $this->Lang_Get('plugin.ab.banneroid_side_bar');
+        $this->_aPlaceNames[3] = $this->Lang_Get('plugin.ab.banneroid_body_begin');
+        $this->_aPlaceNames[4] = $this->Lang_Get('plugin.ab.banneroid_body_end');
         $this->aActivePlugins = $this->Plugin_GetActivePlugins();
     }
 
@@ -58,7 +58,7 @@ class PluginAb_ModuleBanner extends Module {
                 $aPages = $this->_oMapper->GetBannerPagesNames($oBanner);
                 $sPages = '';
                 foreach ($aPages as $aRow) {
-                    $sPages.=" " . $this->Lang_Get('plugin.banneroid.'.$aRow['place_name']) . '(' .
+                    $sPages.=" " . $this->Lang_Get('plugin.ab.'.$aRow['place_name']) . '(' .
                             $this->_aPlaceNames[$aRow['place_type']] . ')';
                 }
                 $oBanner->setPagesNames($sPages);
@@ -97,7 +97,7 @@ class PluginAb_ModuleBanner extends Module {
         if (is_uploaded_file($sFileTmp)) {
 
             if (strlen(@$oBanner->getBannerImage())) {//remove old image file
-                @unlink(Config::Get("plugin.banneroid.upload_dir") . $oBanner->getBannerImage());
+                @unlink(Config::Get("plugin.ab.upload_dir") . $oBanner->getBannerImage());
             }
 
             $sFileName = func_generator(); //gen new file name
@@ -108,7 +108,7 @@ class PluginAb_ModuleBanner extends Module {
 
 
             if (!@move_uploaded_file($sFileTmp,
-                            Config::Get("plugin.banneroid.upload_dir") . $sFileName)) {
+                            Config::Get("plugin.ab.upload_dir") . $sFileName)) {
                 return false;
             }
 
@@ -204,7 +204,7 @@ class PluginAb_ModuleBanner extends Module {
         $oBanner = $this->GetBannerById($sBannerId);
 
         if (strlen(@$oBanner->getBannerImage())) {//remove image file
-            @unlink(Config::Get("plugin.banneroid.upload_dir") . $oBanner->getBannerImage());
+            @unlink(Config::Get("plugin.ab.upload_dir") . $oBanner->getBannerImage());
         }
 
         $this->_oMapper->DeleteBanner($oBanner);
@@ -305,32 +305,32 @@ class PluginAb_ModuleBanner extends Module {
             $sEndDate = $_REQUEST['banner_end_date'];
 
             $bStateError = 0;
-            if (!preg_match(Config::Get('plugin.banneroid.banner_date_reg'), $sStartDate)) {
+            if (!preg_match(Config::Get('plugin.ab.banner_date_reg'), $sStartDate)) {
                 $this->Message_AddError(
-                        $this->Lang_Get("plugin.banneroid.banneroid_error_date_start"),
-                        $this->Lang_Get('plugin.banneroid.banneroid_error'));
+                        $this->Lang_Get("plugin.ab.banneroid_error_date_start"),
+                        $this->Lang_Get('plugin.ab.banneroid_error'));
                 $bStateError = 1;
             }
 
-            if (!preg_match(Config::Get('plugin.banneroid.banner_date_reg'), $sEndDate)) {
+            if (!preg_match(Config::Get('plugin.ab.banner_date_reg'), $sEndDate)) {
                 $this->Message_AddError(
-                        $this->Lang_Get("plugin.banneroid.banneroid_error_date_end"),
-                        $this->Lang_Get('plugin.banneroid.banneroid_error'));
+                        $this->Lang_Get("plugin.ab.banneroid_error_date_end"),
+                        $this->Lang_Get('plugin.ab.banneroid_error'));
                 $bStateError = 1;
             }
 
 
             if (!func_check($_REQUEST['banner_name'], 'text', 2, 3000)) {
                 $this->Message_AddError(
-                        $this->Lang_Get("plugin.banneroid.banneroid_error_name"),
-                        $this->Lang_Get('plugin.banneroid.banneroid_error'));
+                        $this->Lang_Get("plugin.ab.banneroid_error_name"),
+                        $this->Lang_Get('plugin.ab.banneroid_error'));
                 $bStateError = 1;
             }
 
-            if (!preg_match(Config::Get('plugin.banneroid.banner_url_reg'), $_REQUEST['banner_url']) and !$_REQUEST['banner_html']) {
+            if (!preg_match(Config::Get('plugin.ab.banner_url_reg'), $_REQUEST['banner_url']) and !$_REQUEST['banner_html']) {
                 $this->Message_AddError(
-                        $this->Lang_Get("plugin.banneroid.banneroid_error_url"),
-                        $this->Lang_Get('plugin.banneroid.banneroid_error'));
+                        $this->Lang_Get("plugin.ab.banneroid_error_url"),
+                        $this->Lang_Get('plugin.ab.banneroid_error'));
                 $bStateError = 1;
             }
             
@@ -343,8 +343,8 @@ class PluginAb_ModuleBanner extends Module {
                     $aLangs = $this->PluginL10n_L10n_GetAllowedLangs();
                     if (!in_array($sLang, $aLangs)) {
                         $this->Message_AddError(
-                            $this->Lang_Get("plugin.banneroid.banneroid_error_lang"),
-                            $this->Lang_Get('plugin.banneroid.banneroid_error'));
+                            $this->Lang_Get("plugin.ab.banneroid_error_lang"),
+                            $this->Lang_Get('plugin.ab.banneroid_error'));
                         $bStateError = true;
                     }
                 }
@@ -374,17 +374,17 @@ class PluginAb_ModuleBanner extends Module {
                 $aImageFile = $_FILES["banner_image"];
 
                 $aSize = @getimagesize($aImageFile["tmp_name"]);
-                if (!in_array($aSize['mime'], Config::Get('plugin.banneroid.images_mime'))) {
+                if (!in_array($aSize['mime'], Config::Get('plugin.ab.images_mime'))) {
                     $this->Message_AddError(
-                            $this->Lang_Get("plugin.banneroid.banneroid_error_image_extension"),
-                            $this->Lang_Get('plugin.banneroid.banneroid_error'));
+                            $this->Lang_Get("plugin.ab.banneroid_error_image_extension"),
+                            $this->Lang_Get('plugin.ab.banneroid_error'));
                     $iOk = 0;
                 } else
 
                 if (!$this->UploadImage($aImageFile, $oBanner)) {
                     $this->Message_AddError(
-                            $this->Lang_Get("plugin.banneroid.banneroid_error_unable_to_upload_image"),
-                            $this->Lang_Get('plugin.banneroid.banneroid_error'));
+                            $this->Lang_Get("plugin.ab.banneroid_error_unable_to_upload_image"),
+                            $this->Lang_Get('plugin.ab.banneroid_error'));
                     $iOk = 0;
                 }
             }
@@ -399,8 +399,8 @@ class PluginAb_ModuleBanner extends Module {
 
             if (!isset($iRes)) { //show error editiding banner
                 $this->Message_AddError(
-                        $this->Lang_Get("plugin.banneroid.banneroid_error_edit"),
-                        $this->Lang_Get('plugin.banneroid.banneroid_error'));
+                        $this->Lang_Get("plugin.ab.banneroid_error_edit"),
+                        $this->Lang_Get('plugin.ab.banneroid_error'));
                 return false;
             } elseif(is_array(getRequest('banner_place')) && count(getRequest('banner_place'))) {
                 // Add banner pages --------------
