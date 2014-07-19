@@ -1,5 +1,5 @@
-jQuery(document).ready(function(){
-    var datepicker = jQuery('.datepicker');
+$(document).ready(function(){
+    var datepicker = $('.datepicker-simple');
     datepicker.datepicker({
         dateFormat: 'yy-mm-dd'
     });
@@ -10,7 +10,7 @@ jQuery(document).ready(function(){
         }
     });
 
-    jQuery('#kinds input[name=banner_kind]').click(function() {
+    jQuery('#kinds input[name=banner_kind]').change(function() {
         if (this.value=='kind_html') {
             $('#kind_image').hide();
             $('#kind_html').show();
@@ -20,7 +20,6 @@ jQuery(document).ready(function(){
         };
     });
 
-    // Submit clear
     jQuery('#fmBanneroid').submit(function() {
         selected_kind = jQuery('#kinds input[name="banner_kind"]:checked').val();
         if (selected_kind == 'kind_image') {

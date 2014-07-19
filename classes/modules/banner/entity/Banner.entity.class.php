@@ -12,7 +12,7 @@
  * ----------------------------------------------------------------------------
  */
 
-class PluginBanneroid_ModuleBanner_EntityBanner extends Entity {
+class PluginAb_ModuleBanner_EntityBanner extends Entity {
 
     /**
      * Return banner Id

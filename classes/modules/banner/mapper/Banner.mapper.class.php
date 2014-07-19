@@ -12,7 +12,7 @@
  * ----------------------------------------------------------------------------
  */
 
-class PluginBanneroid_ModuleBanner_MapperBanner extends Mapper {
+class PluginAb_ModuleBanner_MapperBanner extends Mapper {
 
     /**
      * Select list of banners
@@ -101,10 +101,10 @@ class PluginBanneroid_ModuleBanner_MapperBanner extends Mapper {
     /**
      * Update banner in DB
      *
-     * @param PluginBanneroid_ModuleBanner_EntityBanner $oBanner
+     * @param PluginAb_ModuleBanner_EntityBanner $oBanner
      * @return boolean
      */
-    public function UpdateBanner(PluginBanneroid_ModuleBanner_EntityBanner $oBanner) {
+    public function UpdateBanner(PluginAb_ModuleBanner_EntityBanner $oBanner) {
         $sql = "UPDATE " . Config::Get('db.table.banneroid.banner') . "
 			SET
 				banner_name = ?,
@@ -142,10 +142,10 @@ class PluginBanneroid_ModuleBanner_MapperBanner extends Mapper {
     /**
      * Adds banner into DB
      *
-     * @param PluginBanneroid_ModuleBanner_EntityBanner $oBanner
+     * @param PluginAb_ModuleBanner_EntityBanner $oBanner
      * @return boolean
      */
-    public function AddBanner(PluginBanneroid_ModuleBanner_EntityBanner $oBanner) {
+    public function AddBanner(PluginAb_ModuleBanner_EntityBanner $oBanner) {
         $sql = "INSERT INTO " . Config::Get('db.table.banneroid.banner') . "
                             (?#)
 		VALUES
@@ -183,7 +183,7 @@ class PluginBanneroid_ModuleBanner_MapperBanner extends Mapper {
     /**
      * Select pages linked with banner
      *
-     * @param PluginBanneroid_ModuleBanner_EntityBanner $oBanner
+     * @param PluginAb_ModuleBanner_EntityBanner $oBanner
      * @return array
      */
     public function GetBannerPages($oBanner) {
@@ -199,7 +199,7 @@ class PluginBanneroid_ModuleBanner_MapperBanner extends Mapper {
     /**
      * Select pages names linked with banner
      *
-     * @param PluginBanneroid_ModuleBanner_EntityBanner $oBanner
+     * @param PluginAb_ModuleBanner_EntityBanner $oBanner
      * @return array
      */
     public function GetBannerPagesNames($oBanner) {
@@ -219,7 +219,7 @@ class PluginBanneroid_ModuleBanner_MapperBanner extends Mapper {
      *
      * @param int $sPageId
      * @param int $sPageType
-     * @param PluginBanneroid_ModuleBanner_EntityBanner $oBanner
+     * @param PluginAb_ModuleBanner_EntityBanner $oBanner
      * @return <type>
      */
     public function DeleteBannerPage($sPageId, $sPageType, $oBanner) {
@@ -233,7 +233,7 @@ class PluginBanneroid_ModuleBanner_MapperBanner extends Mapper {
     /**
      * Delete banner from DB
      *
-     * @param PluginBanneroid_ModuleBanner_EntityBanner $oBanner
+     * @param PluginAb_ModuleBanner_EntityBanner $oBanner
      * @return void
      */
     public function DeleteBanner($oBanner) {
@@ -256,7 +256,7 @@ class PluginBanneroid_ModuleBanner_MapperBanner extends Mapper {
      *
      * @param int $sPageId
      * @param int $sPageType
-     * @param PluginBanneroid_ModuleBanner_EntityBanner $oBanner
+     * @param PluginAb_ModuleBanner_EntityBanner $oBanner
      * @return boolean
      */
     public function AddBannerPage($sPageId, $sPageType, $oBanner) {

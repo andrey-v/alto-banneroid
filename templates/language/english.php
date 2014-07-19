@@ -49,7 +49,7 @@ return array(
     'banneroid_body_end' => 'Footer',
     'banneroid_page' => 'Banner pages',
     'banneroid_stats' => 'Statistic',
-    'banneroid_total' => 'General statistic',
+    'banneroid_total_stat' => 'General statistic',
     'banneroid_clics' => 'Clicks',
     'banneroid_displays' => 'Views',
     'banneroid_total' => 'Total',
@@ -75,4 +75,8 @@ return array(
     
     'banneroid_select_lang' => 'Wrong language',
     'banneroid_error_lang' => 'Incorrect language selected',
+
+    'banneroid_empty' => 'No banners',
+    'banneroid_direct' => 'Actions',
+    'banneroid_empty_stat' => 'No stat',
 );

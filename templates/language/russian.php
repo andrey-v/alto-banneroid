@@ -49,7 +49,7 @@ return array(
     'banneroid_body_end' => 'Футер',
     'banneroid_page' => 'Страницы баннера',
     'banneroid_stats' => 'Статистика',
-    'banneroid_total' => 'Статистика общая',
+    'banneroid_total_stat' => 'Статистика общая',
     'banneroid_clics' => 'Клики',
     'banneroid_displays' => 'Показы',
     'banneroid_total' => 'Всего',
@@ -75,4 +75,8 @@ return array(
     
     'banneroid_select_lang' => 'Выберите язык',
     'banneroid_error_lang' => 'Не верно выбран язык',
+
+    'banneroid_empty' => 'Ни одного баннера еще не создано',
+    'banneroid_direct' => 'Действия',
+    'banneroid_empty_stat' => 'Нет статистики ни по одному баннеру',
 );

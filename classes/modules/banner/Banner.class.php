@@ -12,7 +12,7 @@
  * ----------------------------------------------------------------------------
  */
 
-class PluginBanneroid_ModuleBanner extends Module {
+class PluginAb_ModuleBanner extends Module {
 
     /**
      * Mapper
@@ -54,7 +54,7 @@ class PluginBanneroid_ModuleBanner extends Module {
         $aRows = $this->_oMapper->GetBannersList($params);
         if (is_array($aRows) && count($aRows)) {
             foreach ($aRows as $aRow) {
-                $oBanner = new PluginBanneroid_ModuleBanner_EntityBanner($aRow);
+                $oBanner = new PluginAb_ModuleBanner_EntityBanner($aRow);
                 $aPages = $this->_oMapper->GetBannerPagesNames($oBanner);
                 $sPages = '';
                 foreach ($aPages as $aRow) {
@@ -78,7 +78,7 @@ class PluginBanneroid_ModuleBanner extends Module {
     public function GetBannerById($sId) {
         $aRow = $this->_oMapper->GetBannerById($sId);
         if ($aRow) {
-            return new PluginBanneroid_ModuleBanner_EntityBanner($aRow);
+            return new PluginAb_ModuleBanner_EntityBanner($aRow);
         } else
             return null;
     }
@@ -121,11 +121,11 @@ class PluginBanneroid_ModuleBanner extends Module {
     /**
      * Update banner
      *
-     * @param PluginBanneroid_ModuleBanner_EntityBanner $oBanner
+     * @param PluginAb_ModuleBanner_EntityBanner $oBanner
      *
      * @return bool
      */
-    public function UpdateBanner(PluginBanneroid_ModuleBanner_EntityBanner $oBanner) {
+    public function UpdateBanner(PluginAb_ModuleBanner_EntityBanner $oBanner) {
         if ($oBanner->getBannerId() == '0') {
             return $this->_oMapper->AddBanner($oBanner);
         } else {
@@ -525,7 +525,7 @@ class PluginBanneroid_ModuleBanner extends Module {
 
             if (is_array($aBanners) && count($aBanners)) {
                 foreach ($aBanners as $aRow) {
-                    $aList[] = new PluginBanneroid_ModuleBanner_EntityBanner($aRow);
+                    $aList[] = new PluginAb_ModuleBanner_EntityBanner($aRow);
                     if ($bAddStats) {
                         $this->UpdateBannerStats($aRow['banner_id']);
                     }

@@ -23,7 +23,15 @@ if (!class_exists('Plugin')) {
 /**
  * Banneroid Plugin class for LiveStreet
  */
-class PluginBanneroid extends Plugin {
+class PluginAb extends Plugin {
+
+    /** @var array $aInherits Объявление переопределений (модули, мапперы и сущности) */
+    protected $aInherits = array(
+        'actions' => array(
+            'ActionAdmin',
+        ),
+
+    );
 
     /**
      * Plugin Activation
@@ -49,9 +57,9 @@ class PluginBanneroid extends Plugin {
      * @return void
      */
     public function Init() {
-        //add sub menu
-        $this->Viewer_AddMenu('banneroid', Plugin::GetTemplatePath(__CLASS__) . 'submenu.banneroid.tpl');
-        $this->Viewer_Assign("sTemplateWebPathPluginBanneroid", Plugin::GetTemplateWebPath(__CLASS__));
+
+        $this->Viewer_AppendStyle(Plugin::GetTemplateDir(__CLASS__) . 'assets/css/style.css');
+        $this->Viewer_AppendScript(Plugin::GetTemplateDir(__CLASS__) . 'assets/js/script.js');
     }
 
     /**

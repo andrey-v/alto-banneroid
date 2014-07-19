@@ -18,7 +18,7 @@
  *
  * @return mixed
  */
-class PluginBanneroid_BlockBanneroid extends Block {
+class PluginAb_WidgetBanneroid extends Widget {
 
     public function Exec() {
         $aBanners = $this->GetParam('aBanners');
