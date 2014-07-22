@@ -25,7 +25,7 @@
                         <tbody>
                         {foreach from=$aBannersList item=oBanner}
                             <tr>
-                                <td><a href="{router page='banneroid'}stats-banners/{$oBanner->getId()}/" class="link">{$oBanner->getName()}</a></td>
+                                <td><a href="{router page='admin'}banneroid-stats/{$oBanner->getId()}/" class="link">{$oBanner->getName()}</a></td>
                                 <td class="center">{$oBanner->getPagesNames()}</td>
                                 <td class="center">
                                     <a href="{router page='admin'}banneroid-edit/{$oBanner->getId()}/"><i class="icon icon-note"></i></a>
