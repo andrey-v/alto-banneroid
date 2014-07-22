@@ -24,8 +24,8 @@ class PluginAb_HookBanneroid extends Hook {
 //            $this->AddHook('init_action', 'AddBannerBlock', __CLASS__, -100);
             $this->AddHook('template_layout_body_begin', 'AddBannerBlock', __CLASS__, -100);
             $this->AddHook(Config::Get('plugin.ab.banner_content_hook'), 'AddBannersInContent', __CLASS__, 0);
-            $this->AddHook('template_body_begin', 'AddBannersInHeader', __CLASS__, 0);
-            $this->AddHook('template_body_end', 'AddBannersInFooter', __CLASS__, 0);
+            $this->AddHook('template_layout_body_begin', 'AddBannersInHeader', __CLASS__, 0);
+            $this->AddHook('template_layout_body_end', 'AddBannersInFooter', __CLASS__, 0);
         }
     }
 
