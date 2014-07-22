@@ -18,7 +18,7 @@
 Файлы в этом архиве распостраняются по лицензии GNU GPL. Вы можете найти копию
 этой лицензии в файле LICENSE.txt.
 
-Представляет собой портированную для Alto CMS версию плагина https://catalog.livestreetcms.com/addon/view/73/
+Представляет собой портированную для Alto CMS версию плагина https://catalog.livestreetcms.com/addon/view/73/ от студии http://stfalcon.com
 
 
 ИСТОРИЯ ВЕРСИЙ
