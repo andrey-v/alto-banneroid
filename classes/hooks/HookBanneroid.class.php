@@ -20,6 +20,9 @@ class PluginAb_HookBanneroid extends Hook {
      * @return void
      */
     public function RegisterHook() {
+        if (Router::GetAction() == 'admin') {
+            return;
+        }
         if (isset($_SERVER['REQUEST_URI'])) {
 //            $this->AddHook('init_action', 'AddBannerBlock', __CLASS__, -100);
             $this->AddHook('template_layout_body_begin', 'AddBannerBlock', __CLASS__, -100);
